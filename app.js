@@ -13,6 +13,10 @@ var express = require("express"),
 
     const fetch = require('node-fetch');
 
+    app.get('/', (req,res) => {
+        res.redirect('/index');
+    })
+
     app.get('/index', (req,res) => {
         let url = "https://jobs.github.com/positions.json";
     
