@@ -1,0 +1,213 @@
+<html>
+    <head>
+        <title>
+            Github Jobs
+        </title>
+ 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+       
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type=textbox]{
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 5px 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.info {
+  border-color: #00477e;
+  color: #00477e;
+}
+.button1 {
+  background-color: #00477e;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   background-color: white;
+   width: 100%;
+   color: grey;
+   text-align: center;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 10px;
+    
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("backgroundImg.png");
+
+  min-height: 150px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+</style>
+</head>
+    
+<body style="background-color:#F7F7F7;">
+        <div class="container pt-4">
+            <a href="/index"><h3 style="color:black"><b>Github</b> Jobs</h3></a>
+            <br>
+            <div class="bg-img">
+                <form class="example container pt-5" method="get" action="/search" >
+                 <input type="text" placeholder="Companies,Title or Expertise" id="sv" name="search">
+                 <button type="submit">Search</button>
+                </form>
+               
+            </div>
+        </div>
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-3 col-md-6 col-lg-4 ">
+                    <ul id="filters" style="list-style-type:none">
+                    <br><br>
+                    <li><h6 style="color:#00477e;font-weight:550;"><input type="checkbox" id="filter-fulltime" value="Full Time"> Full Time</b></h6></li>
+                    <br><br>
+                    <h5 style="color:#A0A0A0"><b>LOCATION</b></h5>
+                    <li><input type="textbox" id="ulocation" name="ulocation" placeholder="City,state,zip code or country"><br><br></li>
+                    <li><h6 style="color:#00477e;font-weight:550;"><input type="radio" name="loc" value="Breda" id="filter" > Breda</b></h6></li>
+                    <li><h6 style="color:#00477e;font-weight:550;"><input type="radio"  name="loc"  value="Berlin" id="filter" > Berlin</b></h6></li>
+                    <li><h6 style="color:#00477e;font-weight:550;"><input type="radio"  name="loc"  id="filter" value="London"> London</b></h6></li>
+                    <li><h6 style="color:#00477e;font-weight:550;"><input type="radio"   name="loc" id="filter" value="Amsterdam" > Amsterdam</b></h6></li>
+                    </ul>  
+
+                </div>
+                <div class="col-sm-9 col-md-6 col-lg-8 " >
+                    <% data.forEach(function (data) { %>
+                    <section>
+                        <div class="container pt-3 <%= data.type %> <%= data.location %>">
+                          <div class="card">
+                            <div class="row">
+                              <div class="col-md-4">
+                                  <img src="<%= data.company_logo %>" class="w-100">
+                                </div>
+                                <div class="col-md-8 px-3">
+                                  <div class="card-block px-3">
+                                      <br>
+                                    <h5 class="card-title" style="color:#00477e"><b><%= data.company %></b></h5>
+                                    <div class="card-text" style="color:#00477e"><h6><button class="btn info" ><%= data.type %></button><br><br>
+                                    <h6><img src="https://img.icons8.com/cotton/16/000000/globe.png"/><b><%= data.location %> </b>&nbsp &nbsp <b><img src="https://img.icons8.com/small/16/000000/clock.png"/><%= data.created_at %></b></h6>
+                                    </button></div>
+                                    <div class="card-text"><a href="/positions/<%= data.id %>" id="<%= data.id %>"><button class="button1">Know More</button></a></div><br>
+                                
+                                  </div>
+                                </div>
+                      
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                          <% }) %>
+                        
+                        </div>
+                     
+                </div>
+            </div>
+            <br><br>
+           
+                  
+        </div>
+        <div class="footer">
+            <h6 style="text-align: center;"><b>Keshav Agarwal @ DevChallanges.io</b></h6>
+        </div>
+        <script>
+          
+            $(document).ready(function(){
+              $("#ulocation").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".pt-3").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+
+            $("#filters :checkbox").click(function() {
+            var filter = '.' + $("#filters :checkbox:checked").map(function() {
+            return this.value;
+            }).get().join(".");
+            $('.pt-3 Full Time').hide();
+            $(filter).show();
+          });
+
+          $("#filters :radio").click(function() {
+          var filter = '.' + $("#filters :radio:checked").map(function() {
+          return this.value;
+          }).get().join(".");
+          $('.pt-3 ').hide();
+          $(filter).show();
+});
+
+            </script>
+            
+    </body>
+</html>
